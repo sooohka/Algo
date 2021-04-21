@@ -5,7 +5,7 @@ def getInput():
     IC = int(sys.stdin.readline())
     arr = []
     for _ in range(IC):
-        arr.append(int(sys.stdin.readline()))
+        arr.append(int(sys.stdin.readline().strip()))
     return IC, arr
 
 
