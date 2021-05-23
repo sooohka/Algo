@@ -8,48 +8,46 @@ def getInput():
     for _ in range(M):
         a, b = map(int, sys.stdin.readline().split())
         arr[b].append(a)
-    return N, arr
-
-#recursion limit
-def dfs(temp, A, arr, visited):
-    for i in A:
-        temp.add(i)
-    else:
-        for i in A:
-            if not visited[i]:
-                visited[i] = True
-                dfs(temp, arr[i], arr, visited)
+    return arr, N
 
 
-def bfs(temp, A, arr, visited):
-    A = deque(A)
-    first = 0
-    while A:
-        first = A.popleft()
-        temp.add(first)
-        visited[first] = True
-        for i in range(len(arr[first])):
-            if not visited[arr[first][i]]:
-                A.append(arr[first][i])
+def bfs(temp, i, visited, arr):
+    temp.append(i)
+    visited[i] = True
+    queue = deque([i])
+    while queue:
+        cur = queue.popleft()
+        temp.append(cur)
+        for j in arr[cur]:
+            if not visited[j]:
+                visited[j] = True
+                queue.append(j)
+
+
+def dfs(queue, temp, visited, arr):
+    for j in queue:
+        if not visited[j]:
+            visited[j] = True
+            temp.append(j)
+            dfs(arr[j], temp, visited, arr)
 
 
 def solution():
-    N, arr = getInput()
-    maxNum = 0
+    arr, N = getInput()
     ans = []
+    maxLen = 0
     for i in range(1, N + 1):
-        temp = set([i])
         visited = [False] * (N + 1)
-        # bfs(temp, arr[i], arr, visited)
-        dfs(temp, arr[i], arr, visited)
-        if len(temp) > maxNum:
-            ans = []
-            maxNum = len(temp)
+        temp = []
+        bfs(temp, i, visited, arr)
+        # queue = deque([i])
+        # dfs(queue, temp, visited, arr)
+        if len(temp) == maxLen:
             ans.append(i)
-        elif len(temp) == maxNum:
-            ans.append(i)
-    for i in ans:
-        sys.stdout.write(str(i) + " ")
+        elif len(temp) > maxLen:
+            ans = [i]
+            maxLen = len(temp)
+    sys.stdout.write(" ".join(list(map(str, ans))))
 
 
 solution()

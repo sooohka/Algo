@@ -4,7 +4,7 @@ import sys
 def getInput():
     n, m = map(int, sys.stdin.readline().split())
     arr = list(map(int, sys.stdin.readline().split()))
-    return n, m, arr
+    return n, m, sorted(arr)
 
 
 answer = 0
@@ -12,19 +12,19 @@ answer = 0
 
 def cutTree(arr, cutter):
     total = 0
-    sum(arr)
-    for i in range(len(arr)):
-        total += arr[i] - cutter if arr[i] - cutter > 0 else 0
+    for i in arr:
+        if i - cutter > 0:
+            total += i - cutter
     return total
 
-#TODO: 하던거 이어서하기 
+
 def binarySearch(m, arr, start, last):
     global answer
-    if start >= last:
+    if start > last:
         return
     mid = (start + last) // 2
     if cutTree(arr, mid) >= m:
-        if mid > answer:
+        if answer < mid:
             answer = mid
         binarySearch(m, arr, mid + 1, last)
     else:
@@ -34,7 +34,7 @@ def binarySearch(m, arr, start, last):
 def solution():
     global answer
     n, m, arr = getInput()
-    binarySearch(m, arr, min(arr), max(arr))
+    binarySearch(m, arr, 0, max(arr))
     print(answer)
 
 
