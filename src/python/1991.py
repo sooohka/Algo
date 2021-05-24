@@ -2,59 +2,58 @@ import sys
 
 
 class Node:
-    def __init__(self, item):
-        self.item = item
-        self.left = None
-        self.right = None
-
-
-class Tree:
-    def __init__(self, item=None):
-        self.root = Node(item)
-
-    def appendLeft(self, to, item):
-        no = Node(item)
-        if item != ".":
-            to.left = no
-
-    def appendRight(self, to, item):
-        no = Node(item)
-        if item != ".":
-            to.right = no
-
-    def find(self, fr, find):
-        if fr.left == None:
-            pass
-        elif fr.right == None:
-            pass
-        elif fr.left == find:
-            return fr.left
-        elif fr.right == find:
-            return fr.right
+    def __init__(self, content, left, right):
+        self.content = content
+        if left != ".":
+            self.left = left
         else:
-            self.find(fr.left, find)
-            self.find(fr.left, find)
+            self.left = None
+        if right != ".":
+            self.right = right
+        else:
+            self.right = None
+
+    def printer(self):
+        print("content %s left %s right %s" % (self.content, self.left, self.right))
+
+
+def inorder(arr, node):
+    if node:
+        inorder(arr, arr[node].left)
+        print(arr[node].content, end="")
+        inorder(arr, arr[node].right)
+
+
+def preorder(arr, node):
+    if node:
+        print(arr[node].content, end="")
+        preorder(arr, arr[node].left)
+        preorder(arr, arr[node].right)
+
+
+def postorder(arr, node):
+    if node:
+        postorder(arr, arr[node].left)
+        postorder(arr, arr[node].right)
+        print(arr[node].content, end="")
 
 
 def getInput():
     IC = int(sys.stdin.readline())
-    tree = Tree()
-    R = 0
+    arr = {}
     for _ in range(IC):
-        root, left, right = map(str, sys.stdin.readline().split())
-        if tree.root.item == None:
-            tree = Tree(root)
-            R = tree.root
-        else:
-            R = tree.find(tree.root, root)
-        tree.appendLeft(R, left)
-        tree.appendRight(R, right)
-        print(tree.root.left)
+        a, b, c = map(str, sys.stdin.readline().split())
+        arr[a] = Node(a, b, c)
+    return arr
 
 
 def solution():
-    tree = getInput()
-    pass
+    arr = getInput()
+    preorder(arr, "A")
+    print()
+    inorder(arr, "A")
+    print()
+    postorder(arr, "A")
 
 
 solution()
