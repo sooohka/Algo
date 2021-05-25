@@ -13,29 +13,33 @@ def getInput():
 
 
 def boy(switches, loc):
+    temp = loc
     while loc < len(switches):
         if switches[loc] == 1:
             switches[loc] = 0
         elif switches[loc] == 0:
             switches[loc] = 1
-        loc += loc
+        loc += temp
 
 
 def girl(switches, loc):
-    val = 0
-    while loc - val >= 0 and loc + val < len(switches):
+    val = 1
+    if switches[loc] == 1:
+        switches[loc] = 0
+    else:
+        switches[loc] = 1
+    while loc - val > 0 and loc + val < len(switches):
         if switches[loc + val] == switches[loc - val]:
             if switches[loc + val] == 1:
                 switches[loc + val] = 0
             elif switches[loc + val] == 0:
                 switches[loc + val] = 1
-            if val == 0:
-                val += 1
-                continue
             if switches[loc - val] == 1:
                 switches[loc - val] = 0
             elif switches[loc - val] == 0:
                 switches[loc - val] = 1
+        else:
+            break
         val += 1
 
 
@@ -46,13 +50,14 @@ def solution():
         if kids[i][0] == 1:
             boy(switches, kids[i][1])
         # girl
-        if kids[i][0] == 1:
+        if kids[i][0] == 2:
             girl(switches, kids[i][1])
-
+    strs = ""
     for i in range(1, len(switches)):
+        strs += str(switches[i]) + " "
         if i % 20 == 0:
-            sys.stdout.write("\n")
-        sys.stdout.write(str(switches[i]) + " ")
+            strs += "\n"
+    sys.stdout.write(strs)
 
 
 solution()
