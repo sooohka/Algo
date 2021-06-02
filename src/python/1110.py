@@ -11,6 +11,6 @@ def solution():
         last = (temp + last) % 10
         count += 1
     print(count)
-
+#안녕
 
 solution()
