@@ -12,7 +12,7 @@ def getPrimeCount(n):
     count = 0
     arr = []
     for i in range(n, 2 * n + 1):
-        arr[i] True
+        arr[i] = True
     i = 2
     while i * i <= n:
         if arr[i]:
