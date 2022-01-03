@@ -35,4 +35,3 @@ def queen(n, board, visited):
 
 
 solution(int(input()))
-# pypy만 통과... n==14 일때 걸린다 python으로 통과하는 방법 찾아보자
