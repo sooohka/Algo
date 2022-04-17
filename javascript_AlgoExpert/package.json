@@ -2,6 +2,7 @@
   "name": "javascript_AlgoExpert",
   "version": "1.0.0",
   "license": "MIT",
+  "type": "commonjs",
   "devDependencies": {
     "eslint": "~8.13.0",
     "eslint-config-airbnb-base": "~15.0.0",
