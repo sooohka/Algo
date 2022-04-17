@@ -1,31 +1,31 @@
 // This is an input class. Do not edit.
 class BinaryTree {
   constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
+    this.value = value
+    this.left = null
+    this.right = null
   }
 }
 
 function helper(tree) {
-  if (tree === null) return { d: 0, h: 0 };
+  if (tree === null) return { d: 0, h: 0 }
 
-  const left = helper(tree.left);
-  const right = helper(tree.right);
+  const left = helper(tree.left)
+  const right = helper(tree.right)
 
-  const currentHeight = Math.max(left.h, right.h) + 1;
-  const currentDiamter = left.h + right.h;
-  const longest = Math.max(currentDiamter, left.d, right.d);
-  return { h: currentHeight, d: longest };
+  const currentHeight = Math.max(left.h, right.h) + 1
+  const currentDiamter = left.h + right.h
+  const longest = Math.max(currentDiamter, left.d, right.d)
+  return { h: currentHeight, d: longest }
 }
 
 function binaryTreeDiameter(tree) {
-  return helper(tree).d;
+  return helper(tree).d
 }
 
 // Do not edit the line below.
-exports.binaryTreeDiameter = binaryTreeDiameter;
-exports.BinaryTree = BinaryTree;
+exports.binaryTreeDiameter = binaryTreeDiameter
+exports.BinaryTree = BinaryTree
 
 // 트리 내에서 겹치지 않는 최대경로를 구하는 문제
 //

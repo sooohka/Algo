@@ -4,27 +4,27 @@
 // and methods to the class.
 class Node {
   constructor(name) {
-    this.name = name;
-    this.children = [];
+    this.name = name
+    this.children = []
   }
 
   addChild(name) {
-    this.children.push(new Node(name));
-    return this;
+    this.children.push(new Node(name))
+    return this
   }
 
   breadthFirstSearch(array) {
-    const stack = [this];
+    const stack = [this]
     while (stack.length !== 0) {
-      const cur = stack.shift();
+      const cur = stack.shift()
       for (const child of cur.children) {
-        stack.push(child);
+        stack.push(child)
       }
-      array.push(cur.name);
+      array.push(cur.name)
     }
-    return array;
+    return array
   }
 }
 
 // Do not edit the line below.
-exports.Node = Node;
+exports.Node = Node

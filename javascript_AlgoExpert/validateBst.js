@@ -1,26 +1,26 @@
 // This is an input class. Do not edit.
 class BST {
   constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
+    this.value = value
+    this.left = null
+    this.right = null
   }
 }
 
 function validateBst(tree) {
-  return f(tree, -Infinity, Infinity);
+  return f(tree, -Infinity, Infinity)
 }
 
 function f(tree, min, max) {
-  if (tree === null) return true;
-  if (tree.value < min) return false;
-  if (tree.value >= max) return false;
-  return f(tree.left, min, tree.value) && f(tree.right, tree.value, max);
+  if (tree === null) return true
+  if (tree.value < min) return false
+  if (tree.value >= max) return false
+  return f(tree.left, min, tree.value) && f(tree.right, tree.value, max)
 }
 
 // Do not edit the line below.
-exports.BST = BST;
-exports.validateBst = validateBst;
+exports.BST = BST
+exports.validateBst = validateBst
 
 // 이진탐색트리인지 검사하는 문제
 // 1. 이진탐색트리의 왼쪽에 들어오는 값은 항상 부모보다 작아야함

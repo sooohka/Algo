@@ -1,23 +1,23 @@
 function longestPeak(array) {
-  let highest = 0;
+  let highest = 0
   for (let i = 1; i < array.length - 1; i += 1) {
-    let count = 1;
-    let j = i;
-    const isPeak = array[i - 1] < array[i] && array[i] > array[i + 1];
-    if (!isPeak) continue;
+    let count = 1
+    let j = i
+    const isPeak = array[i - 1] < array[i] && array[i] > array[i + 1]
+    if (!isPeak) continue
     while (j > 0 && array[j] > array[j - 1]) {
-      count += 1;
-      j -= 1;
+      count += 1
+      j -= 1
     }
-    j = i;
+    j = i
     while (j < array.length - 1 && array[j] > array[j + 1]) {
-      count += 1;
-      j += 1;
+      count += 1
+      j += 1
     }
-    if (highest < count) highest = count;
+    if (highest < count) highest = count
   }
-  console.log(highest);
-  return highest;
+  console.log(highest)
+  return highest
 }
 // 이 문제는 우선 가장 긴 픽을 찾는 문제입니다.
 // 저는 이문제를 해결하기 위해서는 우선 peak의 꼭대기를 먼저 찾을것 같습니다.

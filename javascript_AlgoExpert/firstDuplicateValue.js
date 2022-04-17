@@ -1,10 +1,10 @@
 function firstDuplicateValue(array) {
-  const dict = {};
+  const dict = {}
   for (const val of array) {
-    if (dict[val] === undefined) dict[val] = true;
-    else return val;
+    if (dict[val] === undefined) dict[val] = true
+    else return val
   }
-  return -1;
+  return -1
 }
 // 처음으로 겹치는 숫자를 찾는 문제.
 // 딕셔너리를 사용하면 편할것 같아서 딕셔너리를 사용함.

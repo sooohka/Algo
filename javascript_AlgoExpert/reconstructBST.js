@@ -1,25 +1,25 @@
 // This is an input class. Do not edit.
 class BST {
   constructor(value, left = null, right = null) {
-    this.value = value;
-    this.left = left;
-    this.right = right;
+    this.value = value
+    this.left = left
+    this.right = right
   }
 }
 
 function reconstructBst(array) {
-  if (array.length === 0) return null;
-  let root = new BST(array[0]);
-  let idx = array.length;
+  if (array.length === 0) return null
+  const root = new BST(array[0])
+  let idx = array.length
   for (let i = 1; i < array.length; i += 1) {
     if (array[i] >= root.value) {
-      idx = i;
-      break;
+      idx = i
+      break
     }
   }
-  root.left = reconstructBst(array.slice(1, idx));
-  root.right = reconstructBst(array.slice(idx, array.length));
-  return root;
+  root.left = reconstructBst(array.slice(1, idx))
+  root.right = reconstructBst(array.slice(idx, array.length))
+  return root
 }
 
 // 전위 탐색으로 찾은 값들을 가지고 이진탐색트리를 만드는 문제
@@ -31,5 +31,5 @@ function reconstructBst(array) {
 // root.right에 들어가는 배열에는 idx부터 배열의 길이까지 짤라서 넣어줌
 
 // Do not edit the lines below.
-exports.BST = BST;
-exports.reconstructBst = reconstructBst;
+exports.BST = BST
+exports.reconstructBst = reconstructBst

@@ -1,20 +1,20 @@
 function mergeOverlappingIntervals(array) {
-  const ans = [];
-  array.sort((a, b) => a[0] - b[0]);
+  const ans = []
+  array.sort((a, b) => a[0] - b[0])
   for (let i = 0; i < array.length - 1; i += 1) {
-    const cur = array[i];
-    const next = array[i + 1];
-    //not overlap
+    const cur = array[i]
+    const next = array[i + 1]
+    // not overlap
     if (cur[1] < next[0]) {
-      ans.push(cur);
+      ans.push(cur)
     }
-    //overlap
+    // overlap
     else {
-      array[i + 1] = [cur[0], Math.max(cur[1], next[1])];
+      array[i + 1] = [cur[0], Math.max(cur[1], next[1])]
     }
   }
-  ans.push(array[array.length - 1]);
-  return ans;
+  ans.push(array[array.length - 1])
+  return ans
 }
 // 2차원 배열m의 요소중 overlap되는 요소(m[k])를 머지하는 문제
 // 이때, overlap은 m[k][1]이 m[k+1][0]보다 큰 경우를 말함

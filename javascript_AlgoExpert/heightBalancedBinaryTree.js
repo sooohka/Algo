@@ -1,31 +1,31 @@
 // This is an input class. Do not edit.
 class BinaryTree {
   constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
+    this.value = value
+    this.left = null
+    this.right = null
   }
 }
 
 function helper(tree, ans) {
   if (tree === null) {
-    return 0;
+    return 0
   }
-  const leftH = helper(tree.left, ans);
-  const rightH = helper(tree.right, ans);
+  const leftH = helper(tree.left, ans)
+  const rightH = helper(tree.right, ans)
   if (Math.abs(leftH - rightH) > 1) {
-    ans.ans = false;
+    ans.ans = false
   }
   if (leftH > rightH) {
-    return leftH + 1;
+    return leftH + 1
   }
-  return rightH + 1;
+  return rightH + 1
 }
 
 function heightBalancedBinaryTree(tree) {
-  let ans = { ans: true };
-  helper(tree, ans);
-  return ans.ans;
+  const ans = { ans: true }
+  helper(tree, ans)
+  return ans.ans
 }
 /*
  모든 노드에 대해 왼쪽 자식, 오른쪽 자식의 높이의 차이가 1이하임을 확인하는 문제
